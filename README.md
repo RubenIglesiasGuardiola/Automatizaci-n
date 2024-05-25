@@ -6,8 +6,8 @@
 </head>
 <body>
     <div class="container">
-        <h1>Module 10 Challenge Lab</h1>
-        <p>Automating Infrastructure Deployment</p>
+        <h1 style="text-size:32px">Module 10 Challenge Lab</h1>
+        <h2>Automating Infrastructure Deployment</h2>
     </div>
     <div class="content">
         <p>
