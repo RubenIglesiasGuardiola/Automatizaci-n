@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Module 10 Challenge Lab - Automating Infrastructure Deployment</title>
     <style>
         body {
             font-family: Arial, sans-serif;
