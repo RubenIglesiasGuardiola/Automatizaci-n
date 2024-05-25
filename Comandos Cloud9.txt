@@ -1,0 +1,41 @@
+aws configure get region
+aws cloudformation create-stack --stack-name CreateBucket --template-body file://S3.yaml
+
+wget https://aws-tc-largeobjects.s3.us-west-2.amazonaws.com/CUR-TF-200-ACACAD-2-91555/14-lab-mod10-challenge-CFn/s3/static-website.zip
+unzip static-website.zip -d static
+cd static
+aws s3api put-bucket-ownership-controls --bucket <BucketName> --ownership-controls Rules=[{ObjectOwnership=BucketOwnerPreferred}]
+aws s3api put-public-access-block --bucket <BucketName> --public-access-block-configuration "BlockPublicAcls=false,RestrictPublicBuckets=false,IgnorePublicAcls=false,BlockPublicPolicy=false"
+aws s3 cp --recursive . s3://<BucketName>/ --acl public-read
+
+cd ../
+aws cloudformation validate-template --template-body file://S3.yaml
+aws cloudformation update-stack --stack-name CreateBucket --template-body file://S3.yaml
+
+git clone https://git-codecommit.us-east-1.amazonaws.com/v1/repos/CFTemplatesRepo
+cd CFTemplatesRepo
+git status
+
+
+Cafe-Network
+aws cloudformation validate-template --template-body file:///home/ec2-user/environment/CFTemplatesRepo/templates/cafe-network.yaml
+git status
+git add .
+git status
+git add templates/cafe-network.yaml
+git commit -m 'initial commit of network template' templates/cafe-network.yaml
+git status
+git push
+
+Cafe-App:
+aws cloudformation validate-template --template-body file:///home/ec2-user/environment/CFTemplatesRepo/templates/cafe-app.yaml
+git status
+git add .
+git status
+git add templates/cafe-app.yaml
+git commit -m "created cafe-app"
+git status
+git push
+
+aws cloudformation create-stack --stack-name update-cafe-network --template-body file:///home/ec2-user/environment/CFTemplatesRepo/templates/cafe-network.yaml --region us-west-2
+aws s3 cp templates/cafe-app.yaml s3://<repo_bucketname>/
