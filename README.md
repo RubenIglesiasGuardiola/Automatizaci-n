@@ -17,7 +17,7 @@
             <li>Crear plantillas de CloudFormation en formato JSON o YAML.</li>
             <li>Implementar pilas (Stacks) para desplegar y gestionar recursos en AWS.</li>
             <li>Automatizar la creación, actualización y eliminación de recursos en AWS.</li>
-            <li>Integrar CloudFormation con otros servicios como IAM, EC2, S3, y RDS.</li>
+            <li>Integrar CloudFormation con otros servicios como EC2, y S3.</li>
         </ul>
         <p>
             El objetivo del laboratorio es proporcionar a los estudiantes una experiencia práctica en la automatización de la infraestructura, preparándolos para gestionar entornos de AWS de manera eficiente y efectiva.
